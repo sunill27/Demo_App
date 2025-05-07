@@ -129,4 +129,34 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
   document.getElementById("newButton").addEventListener("click", newQuote);
+
+  //Previous Quote Function:
+  function previousQuote() {
+    // console.log("Previous Clicked");
+    if (currentIndex > 0) {
+      currentIndex--;
+      selectedQuote = arr[currentIndex];
+      quoteDisplay.textContent = selectedQuote;
+    } else if (currentIndex === 0) {
+      currentIndex = 0; // Set currentIndex to -1 to prevent further decrease
+      quoteDisplay.textContent = arr[0];
+    }
+  }
+  document
+    .getElementById("prevButton")
+    .addEventListener("click", previousQuote);
+
+  //Next Quote Function:
+  function nextQuote() {
+    // console.log("Next Clicked");
+    var max = arr.length;
+    currentIndex++;
+    if (currentIndex <= max - 1) {
+      selectedQuote = arr[currentIndex];
+      quoteDisplay.textContent = selectedQuote;
+    } else {
+      quoteDisplay.textContent = "No more quotes to show!";
+    }
+  }
+  document.getElementById("nextButton").addEventListener("click", nextQuote);
 });
