@@ -73,6 +73,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
   darkButton.addEventListener("click", darkMode);
 
+  const increaseButton = document.getElementById("increaseFont");
+  const decreaseButton = document.getElementById("decreaseFont");
+  const displayQuote = document.getElementById("quoteDisplay");
+
+  // Initial font size in pixels:
+  let currentFontSize = parseInt(
+    window.getComputedStyle(displayQuote).fontSize
+  ); // Get current size
+  var minFontSize = 16; // Minimum font size
+  const maxFontSize = 40; // Or any max value you want
+
+  function increaseFontSize() {
+    if (currentFontSize < maxFontSize) {
+      currentFontSize += 3; // Increase font size by 3 pixels
+      displayQuote.style.fontSize = currentFontSize + "px";
+    }
+  }
+
+  function decreaseFontSize() {
+    if (currentFontSize > minFontSize) {
+      currentFontSize -= 3; // Decrease font size by 3 pixels
+      displayQuote.style.fontSize = currentFontSize + "px";
+    }
+  }
+
+  increaseButton.addEventListener("click", increaseFontSize);
+  decreaseButton.addEventListener("click", decreaseFontSize);
+
   var categoryDropdown = document.getElementById("category");
   var quoteDisplay = document.getElementById("quoteDisplay");
 
